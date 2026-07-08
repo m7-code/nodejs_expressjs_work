@@ -1,0 +1,3 @@
+npm init -y => project ko start karne ka leye
+npm i express => expess framework ko istamal karne ka leye
+npm i nodemon => har bar server ko run na karna pare ess leye install karte han 
