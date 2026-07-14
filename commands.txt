@@ -5,3 +5,5 @@ npm i express => expess framework ko istamal karne ka leye
 npm i nodemon => har bar server ko run na karna pare ess leye install karte han 
 
 npm i ejs => pore page ko render karne ka leye
+
+npm i mongoose => mongodb ka pakage
