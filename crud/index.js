@@ -28,9 +28,18 @@ app.get('/show-contacts/:id', async (req, res) => {
 
 app.get('/add-contact', (req, res) => {res.render('add-contact.ejs')})
 
-app.post('/add-contact', (req, res) => {})
+app.post('/add-contact' ,async (req, res) => {
+const contact 
 
-app.get('/update-contact', (req, res) => {res.render('update-contact.ejs')})
+  first_name = req.body.first_name;
+  last_name = req.body.last_name;
+  email = req.body.email;
+  phone_number = req.body.phone_number;
+  address = req.body.address;
+  res.render('/', { message: 'Contact added successfully!' });
+});
+
+app.get('/update-contact', (req, res) => {res.render('update-contact.ejs')});
 
 app.post('/update-contact', (req, res) => {})
 
