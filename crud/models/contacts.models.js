@@ -1,5 +1,5 @@
-const mongoose = require("mongoose")
-// const mongoosePaginate = require("mongoose-paginate-v2")
+import mongoose from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
 
 // Define Schema
 const contactSchema = mongoose.Schema({
@@ -20,8 +20,8 @@ const contactSchema = mongoose.Schema({
   }
 })
 
-// contactSchema.plugin(mongoosePaginate)
+contactSchema.plugin(mongoosePaginate)
 
 const contact = mongoose.model("Contact", contactSchema)
 
-module.exports = contact
+export default contact

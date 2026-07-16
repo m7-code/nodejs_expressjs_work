@@ -1,51 +1,21 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const Contact = require('./models/contacts.models.js');
+import express from "express"
+const app = express()
+import ContactRoutes from "./routes/contacts.routes.js"
+import { connectDB } from "./config/database.js"
 
-// connect to MongoDB
-mongoose.connect('mongodb+srv://mughiraasad6_db_user:mughira321@cluster0.kkn8rvi.mongodb.net/test?appName=Cluster0').then(() => {
-  console.log('Connected to MongoDB');
-}).catch((err) => {
-  console.error('Error connecting to MongoDB:', err);
-});
+const PORT = process.env.PORT
 
-// middleware
-app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public'));
+// Database Connection
+connectDB()
 
-//routes
+// Middleware
+app.set('view engine', 'ejs')
+app.use(express.urlencoded({extended:false}))
+app.use(express.static('public'))
 
-app.get('/',async (req, res) => {
-  const contacts = await Contact.find();
-  res.render('home.ejs',{contacts})})
+// Routes
+app.use("/",ContactRoutes)
 
-app.get('/show-contacts/:id', async (req, res) => {
-  const contact = await Contact.findById(req.params.id);
-  res.render('show-contacts.ejs', { contact });
-});
-
-app.get('/add-contact', (req, res) => {res.render('add-contact.ejs')})
-
-app.post('/add-contact' ,async (req, res) => {
-const contact 
-
-  first_name = req.body.first_name;
-  last_name = req.body.last_name;
-  email = req.body.email;
-  phone_number = req.body.phone_number;
-  address = req.body.address;
-  res.render('/', { message: 'Contact added successfully!' });
-});
-
-app.get('/update-contact', (req, res) => {res.render('update-contact.ejs')});
-
-app.post('/update-contact', (req, res) => {})
-
-app.post('/delete-contact', (req, res) => {})
-
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
-});
-
+app.listen(PORT, () => {
+  console.log(`Server started Successfully on port ${PORT}.`)
+})

@@ -1,4 +1,4 @@
-import Contact from "../models/contacts.models.js"
+import Contact from "../models/contacts.models.js";
 import mongoose from "mongoose"
 
 // Get All Contacts
