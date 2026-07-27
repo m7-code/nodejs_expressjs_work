@@ -26,4 +26,3 @@ router.post('/update-contact/:id', updateContact)
 router.get('/delete-contact/:id', deleteContact)
 
 export default router
-// module.exports = router ;
